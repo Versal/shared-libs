@@ -1,8 +1,8 @@
 # CDN Shims
 
-Here's some commonly-used JavaScript libraries, and appropriate AMD shims.
-
-Eventually we'll host these on a "real" CDN, preventing the need to either a) bundle them with each gadget, or b) load them all globally in the player.
+Here's some commonly-used JavaScript libraries, and appropriate AMD shims. This
+will help us avoid the need to either a) bundle common dependencies with each
+gadget, or b) load them all globally in the player.
 
 ## Contents
 <table>
@@ -49,3 +49,7 @@ Eventually we'll host these on a "real" CDN, preventing the need to either a) bu
 ## Usage
     git submodule add git://github.com/Versal/cdn-shims.git cdn
     <script src='cdn/config'></script>
+
+## Todo
+- Host these on a real CDN.
+- Become a require plugin (`cdn!*` rather than `cdn.*`)
