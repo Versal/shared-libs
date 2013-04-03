@@ -9,6 +9,7 @@ define [], ->
         'cdn.processing': "#{path}/lib/processing-1.4.1"
         'cdn.raphael': "#{path}/lib/raphael-2.1.0"
         'cdn.underscore': "#{path}/lib/underscore-1.4.4"
+        'cdn.jqueryui': "#{path}/lib/jquery.ui-1.10.2"
 
       shim:
         'cdn.backbone':
@@ -33,4 +34,8 @@ define [], ->
 
         'cdn.underscore':
           exports: '_'
+
+        'cdn.jqueryui':
+          deps: ['cdn.jquery']
+          exports: '$'
 
