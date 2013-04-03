@@ -1,8 +1,8 @@
-# CDN Shims
+# Shared libs
 
-Here's some commonly-used JavaScript libraries, and appropriate AMD shims. This
-will help us avoid the need to either a) bundle common dependencies with each
-gadget, or b) load them all globally in the player.
+Here's some commonly-used JavaScript libraries, and appropriate AMD shims. Also
+includes a little script for injecting these semi-delicately into existing
+require.js configs.
 
 ## Contents
 <table>
@@ -47,8 +47,19 @@ gadget, or b) load them all globally in the player.
 </table>
 
 ## Usage
-    git submodule add git://github.com/Versal/cdn-shims.git cdn
-    <script src='cdn/config'></script>
+First, do this. Replace the last "shared-libs" with the directory you'd like to
+put these submodules in.
+
+    git submodule add git://github.com/Versal/shared-libs.git shared-libs
+
+Then, somewhere in your application (again, replace the string 'shared-libs'
+with the location you specified previously):
+
+    require ['shared-libs/config'], (registerCdn) -> registerCdn('shared-libs')
+
+Then, things can define their dependencies like so:
+
+    define ['cdn.lodash'], (_) -> alert _.random(1, 100)
 
 ## Todo
 - Host these on a real CDN.
