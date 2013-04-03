@@ -1,15 +1,15 @@
 define [], ->
   (path='cdn') ->
-    require.config
+    config = 
       paths:
-        'cdn.backbone': "#{path}/lib/backbone-1.0.0"
-        'cdn.marionette': "#{path}/lib/backbone.marionette-1.0.2"
-        'cdn.jquery': "#{path}/lib/jquery-1.9.1"
-        'cdn.lodash': "#{path}/lib/lodash-1.1.1"
-        'cdn.processing': "#{path}/lib/processing-1.4.1"
-        'cdn.raphael': "#{path}/lib/raphael-2.1.0"
-        'cdn.underscore': "#{path}/lib/underscore-1.4.4"
-        'cdn.jqueryui': "#{path}/lib/jquery.ui-1.10.2"
+        'cdn.backbone': "backbone-1.0.0"
+        'cdn.marionette': "backbone.marionette-1.0.2"
+        'cdn.jquery': "jquery-1.9.1"
+        'cdn.lodash': "lodash-1.1.1"
+        'cdn.processing': "processing-1.4.1"
+        'cdn.raphael': "raphael-2.1.0"
+        'cdn.underscore': "underscore-1.4.4"
+        'cdn.jqueryui': "jquery.ui-1.10.2"
 
       shim:
         'cdn.backbone':
@@ -39,3 +39,7 @@ define [], ->
           deps: ['cdn.jquery']
           exports: '$'
 
+    for k,v of config.paths
+      config.paths[k] = "#{path}/lib/#{v}"
+
+    require.config config
