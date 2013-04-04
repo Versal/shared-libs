@@ -44,6 +44,11 @@ require.js configs.
     <td>1.4.4</td>
     <td>cdn.underscore</td>
   </tr>
+  <tr>
+    <td>jQuery UI</td>
+    <td>1.10.2</td>
+    <td>cdn.jqueryui</td>
+  </tr>
 </table>
 
 ## Usage
