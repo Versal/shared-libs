@@ -42,4 +42,5 @@ define [], ->
     for k,v of config.paths
       config.paths[k] = "#{path}/lib/#{v}"
 
-    require.config config
+    require.config config if require.config
+    config
