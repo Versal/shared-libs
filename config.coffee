@@ -42,5 +42,7 @@ define [], ->
     for k,v of config.paths
       config.paths[k] = "#{path}/lib/#{v}"
 
+    config.paths['cdn.mathjax'] = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=AM_HTMLorMML-full.js"
+
     require.config config if require.config
     config
