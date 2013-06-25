@@ -58,7 +58,7 @@
         v = _ref[k];
         config.paths[k] = "" + path + "/lib/" + v;
       }
-      config.paths['cdn.mathjax'] = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=AM_HTMLorMML-full.js";
+      config.paths['cdn.mathjax'] = "//cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=AM_HTMLorMML-full.js";
       if (require.config) {
         require.config(config);
       }
