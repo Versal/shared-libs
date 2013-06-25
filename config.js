@@ -57,7 +57,7 @@
         v = _ref[k];
         config.paths[k] = "" + path + "/lib/" + v;
       }
-      if (window.location.protocol === "https") {
+      if (window && window.location.protocol === "https:") {
         path = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full.js";
       } else {
         path = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=AM_HTMLorMML-full.js";
