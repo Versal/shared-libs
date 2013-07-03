@@ -9,9 +9,7 @@ define [], ->
         'cdn.processing': "processing-1.4.1"
         'cdn.raphael': "raphael-2.1.0"
         'cdn.underscore': "underscore-1.4.4"
-        # For now, only use JQUI 1.9.2 to avoid namespace conflict
         'cdn.jqueryui': "jquery.ui-1.9.2"
-        'cdn.jqueryui.legacy': "jquery.ui-1.9.2"
 
       shim:
         'cdn.backbone':
@@ -38,10 +36,6 @@ define [], ->
           exports: '_'
 
         'cdn.jqueryui':
-          deps: ['cdn.jquery']
-          exports: '$'
-
-        'cdn.jqueryui.legacy':
           deps: ['cdn.jquery']
           exports: '$'
 
