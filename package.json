@@ -1,0 +1,22 @@
+{
+  "name": "versal-shared-libs",
+  "description": "Shared libs for versal sdk and player",
+  "version": "0.0.1",
+  "author": "Versal Team",
+  "homepage": "http://versal.com/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Versal/shared-libs.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Versal/shared-libs/issues"
+  },
+  "licenses": [
+    {
+      "url": "http://github.com/Versal/shared-libs/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
