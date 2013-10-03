@@ -53,9 +53,9 @@
         config.paths[k] = "" + path + "/lib/" + v;
       }
       if (typeof window !== "undefined" && window.location.protocol === "https:") {
-        path = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full.js";
+        path = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js";
       } else {
-        path = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=AM_HTMLorMML-full.js";
+        path = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js";
       }
       config.paths['cdn.mathjax'] = path;
       if (require.config) {
