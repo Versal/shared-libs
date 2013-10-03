@@ -5,7 +5,7 @@ define [], ->
         'cdn.backbone': "backbone-1.0.0"
         'cdn.marionette': "backbone.marionette-1.0.2"
         'cdn.jquery': "jquery-1.9.1"
-        'cdn.lodash': "lodash-1.1.1"
+        'cdn.lodash': "lodash-2.2.1"
         'cdn.processing': "processing-1.4.1"
         'cdn.raphael': "raphael-2.1.0"
         'cdn.underscore': "underscore-1.4.4"
