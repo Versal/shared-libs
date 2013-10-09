@@ -13,13 +13,14 @@ define [], ->
     # Raw paths go here
     paths =
       'cdn.backbone': 'backbone-1.0.0'
-      'cdn.marionette': 'backbone.marionette-1.0.2'
-      'cdn.jquery': 'jquery-1.9.1'
+      'cdn.marionette': 'backbone.marionette-1.1.0'
+      'cdn.jquery': 'jquery-1.10.2'
       'cdn.processing': 'processing-1.4.1'
-      'cdn.raphael': 'raphael-2.1.0'
+      'cdn.raphael': 'raphael-2.1.2'
       'cdn.underscore': 'underscore-1.5.2'
-      'cdn.jqueryui': 'jquery.ui-1.9.2'
       'cdn.underscore.mixins': 'underscore.mixins'
+      'cdn.jqueryui': 'jquery.ui-1.9.2' # Unfortunately stuck this way due to
+                                        # http://bugs.jqueryui.com/ticket/9381
 
     aliases =
       'cdn.lodash': 'cdn.underscore'
