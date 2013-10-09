@@ -1,16 +1,27 @@
 define [], ->
-  (path='cdn') ->
-    config =
-      paths:
-        'cdn.backbone': "backbone-1.0.0"
-        'cdn.marionette': "backbone.marionette-1.0.2"
-        'cdn.jquery': "jquery-1.9.1"
-        'cdn.lodash': "lodash-2.2.1"
-        'cdn.processing': "processing-1.4.1"
-        'cdn.raphael': "raphael-2.1.0"
-        'cdn.underscore': "underscore-1.4.4"
-        'cdn.jqueryui': "jquery.ui-1.9.2"
 
+  (path = 'cdn') ->
+    # Core dependencies go here
+    coreDeps = [
+      'cdn.jquery'
+      'cdn.underscore'
+      'cdn.backbone'
+      'cdn.marionette'
+    ]
+
+    # Raw paths go here
+    paths =
+      'cdn.backbone': 'backbone-1.0.0'
+      'cdn.marionette': 'backbone.marionette-1.0.2'
+      'cdn.jquery': 'jquery-1.9.1'
+      'cdn.lodash': 'lodash-2.2.1'
+      'cdn.processing': 'processing-1.4.1'
+      'cdn.raphael': 'raphael-2.1.0'
+      'cdn.underscore': 'underscore-1.4.4'
+      'cdn.jqueryui': 'jquery.ui-1.9.2'
+
+    config =
+      paths: {} # set by paths / rawdeps above
       shim:
         'cdn.backbone':
           deps: ['cdn.underscore', 'cdn.jquery']
@@ -39,7 +50,10 @@ define [], ->
           deps: ['cdn.jquery']
           exports: '$'
 
-    for k,v of config.paths
+
+    for k, v of paths
+      if coreDeps.indexOf(k) > -1
+        v = 'core.min'
       config.paths[k] = "#{path}/lib/#{v}"
 
     if typeof window != "undefined" && window.location.protocol == "https:"
@@ -49,4 +63,7 @@ define [], ->
     config.paths['cdn.mathjax'] =  path
 
     require.config config if require.config
+    config.rawPaths = paths
+    config.coreDeps = coreDeps
     config
+
