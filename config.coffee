@@ -59,13 +59,13 @@ define [], ->
     for k, v of paths
       if coreDeps.indexOf(k) > -1
         v = 'core.min'
-      config.paths[k] = "#{path}/lib/#{v}"
+      config.paths[k] = "#{path}/lib/dist/#{v}"
 
     if typeof window != "undefined" && window.location.protocol == "https:"
-      path = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
+      mathjax = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
     else
-      path = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
-    config.paths['cdn.mathjax'] =  path
+      mathjax = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
+    config.paths['cdn.mathjax'] = mathjax
 
     require.config config if require.config
     config.rawPaths = paths

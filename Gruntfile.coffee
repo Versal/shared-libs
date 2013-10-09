@@ -19,7 +19,7 @@ module.exports = (grunt) ->
 
   relativePaths = {}
   for k, v of config.rawPaths
-    relativePaths[k] = "lib/#{v}"
+    relativePaths[k] = "lib/src/#{v}"
 
   grunt.initConfig
     coffee:
@@ -35,17 +35,23 @@ module.exports = (grunt) ->
           include: config.coreDeps
           paths: relativePaths
           shim: config.shim
-          out: 'lib/core.min.js'
+          out: 'lib/dist/core.min.js'
 
     uglify:
       options:
         mangle: true
         report: true
-        preserveComments: true
 
       config:
         files:
           'config.js': ['config.js']
+
+      libs:
+        files: do ->
+          f = {}
+          for k, v of config.rawPaths
+            f["lib/dist/#{v}.js"] = "lib/src/#{v}.js"
+          return f
 
     list:
       options:
