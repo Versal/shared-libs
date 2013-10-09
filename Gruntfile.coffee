@@ -31,7 +31,7 @@ module.exports = (grunt) ->
       dist:
         options:
           mainConfigFile: './config.js'
-          optimize: 'none'
+          optimize: 'uglify2'
           include: config.coreDeps
           paths: relativePaths
           shim: config.shim
