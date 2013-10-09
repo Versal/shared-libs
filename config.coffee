@@ -7,6 +7,7 @@ define [], ->
       'cdn.underscore'
       'cdn.backbone'
       'cdn.marionette'
+      'cdn.underscore.mixins'
     ]
 
     # Raw paths go here
@@ -18,6 +19,7 @@ define [], ->
       'cdn.raphael': 'raphael-2.1.0'
       'cdn.underscore': 'underscore-1.5.2'
       'cdn.jqueryui': 'jquery.ui-1.9.2'
+      'cdn.underscore.mixins': 'underscore.mixins'
 
     aliases =
       'cdn.lodash': 'cdn.underscore'
@@ -45,6 +47,8 @@ define [], ->
 
         'cdn.underscore':
           exports: '_'
+          deps: ['cdn.underscore.mixins']
+          init: (mixins) -> _.mixin mixins
 
         'cdn.jqueryui':
           deps: ['cdn.jquery']
