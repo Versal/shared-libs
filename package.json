@@ -1,7 +1,7 @@
 {
   "name": "versal-shared-libs",
   "description": "Shared libs for versal sdk and player",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Versal Team",
   "homepage": "http://versal.com/",
   "repository": {
