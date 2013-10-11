@@ -1,33 +1,32 @@
 define [], ->
 
   (path = 'cdn') ->
-    # Core dependencies go here
-    coreDeps = [
-      'cdn.jquery'
-      'cdn.underscore'
-      'cdn.backbone'
-      'cdn.marionette'
-      'cdn.underscore.mixins'
-    ]
-
-    # Raw paths go here
-    paths =
-      'cdn.backbone': 'backbone-1.0.0'
-      'cdn.marionette': 'backbone.marionette-1.1.0'
-      'cdn.jquery': 'jquery-1.10.2'
-      'cdn.processing': 'processing-1.4.1'
-      'cdn.raphael': 'raphael-2.1.2'
-      'cdn.underscore': 'underscore-1.5.2'
-      'cdn.underscore.mixins': 'underscore.mixins'
-      'cdn.jqueryui': 'jquery.ui-1.9.2' # Unfortunately stuck this way due to
-                                        # http://bugs.jqueryui.com/ticket/9381
-
-    aliases =
-      'cdn.lodash': 'cdn.underscore'
-
     config =
-      paths: {} # set by paths / rawdeps above
-      map: '*': aliases
+      coreDependencies: # Used in Gruntfile
+        'cdn.jquery': 'lib/src/jquery-1.10.2'
+        'cdn.backbone': 'lib/src/backbone-1.0.0'
+        'cdn.marionette': 'lib/src/backbone.marionette-1.1.0'
+        'cdn.underscore.mixins': 'lib/src/underscore.mixins'
+        'cdn.underscore': 'lib/src/underscore-1.5.2'
+
+      paths:
+        'cdn.backbone':          "#{path}/lib/dist/core.min"
+        'cdn.marionette':        "#{path}/lib/dist/core.min"
+        'cdn.jquery':            "#{path}/lib/dist/core.min"
+        'cdn.underscore':        "#{path}/lib/dist/core.min"
+        'cdn.underscore.mixins': "#{path}/lib/dist/core.min"
+        'cdn.processing':        "#{path}/lib/dist/processing-1.4.1"
+        'cdn.raphael':           "#{path}/lib/dist/raphael-2.1.2"
+
+        # Unfortunately stuck this way due to http://bugs.jqueryui.com/ticket/9381
+        'cdn.jqueryui': "#{path}/lib/dist/jquery.ui-1.9.2"
+
+        'cdn.mathjax': "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
+
+      map:
+        '*':
+          'cdn.lodash': 'cdn.underscore'
+
       shim:
         'cdn.backbone':
           deps: ['cdn.underscore', 'cdn.jquery']
@@ -55,16 +54,6 @@ define [], ->
           deps: ['cdn.jquery']
           exports: '$'
 
-
-    for k, v of paths
-      if coreDeps.indexOf(k) > -1
-        v = 'core.min'
-      config.paths[k] = "#{path}/lib/dist/#{v}"
-
-    config.paths['cdn.mathjax'] = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
-
     require.config config if require.config
-    config.rawPaths = paths
-    config.coreDeps = coreDeps
-    config
 
+    config
