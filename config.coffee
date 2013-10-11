@@ -61,11 +61,7 @@ define [], ->
         v = 'core.min'
       config.paths[k] = "#{path}/lib/dist/#{v}"
 
-    if typeof window != "undefined" && window.location.protocol == "https:"
-      mathjax = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
-    else
-      mathjax = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
-    config.paths['cdn.mathjax'] = mathjax
+    config.paths['cdn.mathjax'] = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
 
     require.config config if require.config
     config.rawPaths = paths
