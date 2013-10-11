@@ -45,11 +45,10 @@ module.exports = (grunt) ->
           'config.js': ['config.js']
 
       libs:
-        files: do ->
-          f = {}
-          for k, v of config.rawPaths
-            f["lib/dist/#{v}.js"] = "lib/src/#{v}.js"
-          return f
+        expand: true
+        flatten: true
+        src: ['lib/src/*.js']
+        dest: 'lib/dist/'
 
     list:
       options:
