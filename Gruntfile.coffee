@@ -1,5 +1,3 @@
-_ = require 'underscore'
-
 configurator = null
 global.define = (deps, method) ->
   configurator = method()
@@ -19,6 +17,10 @@ module.exports = (grunt) ->
 
   config = configurator 'lib'
 
+  relativePaths = {}
+  for k, v of config.rawPaths
+    relativePaths[k] = "lib/src/#{v}"
+
   grunt.initConfig
     coffee:
       config:
@@ -30,8 +32,8 @@ module.exports = (grunt) ->
         options:
           mainConfigFile: './config.js'
           optimize: 'uglify2'
-          include: _.keys(config.coreDependencies)
-          paths: config.coreDependencies
+          include: config.coreDeps
+          paths: relativePaths
           shim: config.shim
           out: 'lib/dist/core.min.js'
 
