@@ -21,7 +21,7 @@ define [], ->
         # Unfortunately stuck this way due to http://bugs.jqueryui.com/ticket/9381
         'cdn.jqueryui': "#{path}/lib/dist/jquery.ui-1.9.2"
 
-        'cdn.mathjax': "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
+        'cdn.mathjax': "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured"
 
       map:
         '*':
@@ -53,6 +53,20 @@ define [], ->
         'cdn.jqueryui':
           deps: ['cdn.jquery']
           exports: '$'
+
+        # https://github.com/mathjax/MathJax-docs/wiki/Integrating-mathjax-into-x%3A-require.js
+        'cdn.mathjax':
+          exports: 'MathJax'
+          init: ->
+            MathJax.Hub.Config
+              config: ["MMLorHTML.js"]
+              jax: ["input/TeX","input/MathML","input/AsciiMath","output/HTML-CSS","output/NativeMML"]
+              extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js"]
+              TeX: extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+
+            MathJax.Hub.Startup.onload()
+
+            MathJax
 
     require.config config if require.config
 
