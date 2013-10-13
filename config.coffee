@@ -55,17 +55,28 @@ define [], ->
           deps: ['cdn.jquery']
           exports: '$'
 
+        # https://github.com/mathjax/MathJax-docs/wiki/Integrating-mathjax-into-x%3A-require.js
+        'cdn.mathjax':
+          exports: 'MathJax'
+          init: ->
+            MathJax.Hub.Config
+              config: ["MMLorHTML.js"]
+              jax: ["input/TeX","input/MathML","input/AsciiMath","output/HTML-CSS","output/NativeMML"]
+              extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js"]
+              TeX: extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js","Safe.js"]
+              skipStartupTypeset: true
+              delayStartupUntil: 'configured'
+              messageStyle: 'none'
+            MathJax.Hub.Configured()
+            MathJax
+
 
     for k, v of paths
       if coreDeps.indexOf(k) > -1
         v = 'core.min'
       config.paths[k] = "#{path}/lib/dist/#{v}"
 
-    if typeof window != "undefined" && window.location.protocol == "https:"
-      mathjax = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
-    else
-      mathjax = "http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"
-    config.paths['cdn.mathjax'] = mathjax
+    config.paths['cdn.mathjax'] = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured'
 
     require.config config if require.config
     config.rawPaths = paths
