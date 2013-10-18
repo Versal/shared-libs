@@ -26,6 +26,7 @@ define [], ->
       'cdn.lodash': 'cdn.underscore'
 
     config =
+      waitSeconds: 120
       paths: {} # set by paths / rawdeps above
       map: '*': aliases
       shim:
