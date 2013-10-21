@@ -19,7 +19,7 @@ module.exports = (grunt) ->
 
   relativePaths = {}
   for k, v of config.rawPaths
-    relativePaths[k] = "lib/src/#{v}"
+    relativePaths[k] = "lib/src/#{v.local}"
 
   grunt.initConfig
     coffee:
