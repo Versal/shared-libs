@@ -1,7 +1,7 @@
 define [], ->
 
   (path = 'cdn') ->
-    # Core dependencies go here
+    # Core dependencies (packaged into a single bundle in the Gruntfile)
     coreDeps = [
       'cdn.jquery'
       'cdn.underscore'
@@ -10,17 +10,26 @@ define [], ->
       'cdn.underscore.mixins'
     ]
 
-    # Raw paths go here
+    # Raw paths to dependencies, optionally with a remote location
     paths =
-      'cdn.backbone': 'backbone-1.0.0'
-      'cdn.marionette': 'backbone.marionette-1.1.0'
-      'cdn.jquery': 'jquery-1.10.2'
-      'cdn.processing': 'processing-1.4.1'
-      'cdn.raphael': 'raphael-2.1.2'
-      'cdn.underscore': 'underscore-1.5.2'
-      'cdn.underscore.mixins': 'underscore.mixins'
-      'cdn.jqueryui': 'jquery.ui-1.9.2' # Unfortunately stuck this way due to
-                                        # http://bugs.jqueryui.com/ticket/9381
+      'cdn.backbone':
+        local: 'backbone-1.0.0'
+      'cdn.marionette':
+        local: 'backbone.marionette-1.1.0'
+      'cdn.jquery':
+        local: 'jquery-1.10.2'
+      'cdn.processing':
+        remote: '//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.1/processing-api.min'
+        local: 'processing-1.4.1'
+      'cdn.raphael':
+        local:'raphael-2.1.2'
+      'cdn.underscore':
+        local: 'underscore-1.5.2'
+      'cdn.underscore.mixins':
+        local: 'underscore.mixins'
+      'cdn.jqueryui':
+        local: 'jquery.ui-1.9.2' # Unfortunately stuck on 1.9.2 due to
+                                 # http://bugs.jqueryui.com/ticket/9381
 
     aliases =
       'cdn.lodash': 'cdn.underscore'
@@ -73,9 +82,9 @@ define [], ->
 
 
     for k, v of paths
-      if coreDeps.indexOf(k) > -1
-        v = 'core.min'
-      config.paths[k] = "#{path}/lib/dist/#{v}"
+      localName = if coreDeps.indexOf(k) > -1 then 'core.min' else v.local
+      localPath = "#{path}/lib/dist/#{localName}"
+      config.paths[k] = if v.remote then [v.remote, localPath] else localPath
 
     config.paths['cdn.mathjax'] = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured'
 
