@@ -16,18 +16,13 @@ require.js configs.
   </tr>
   <tr>
     <td>Backbone.Marionette</td>
-    <td>1.0.2</td>
+    <td>1.1.0</td>
     <td>cdn.marionette</td>
   </tr>
   <tr>
     <td>jQuery</td>
-    <td>1.9.1</td>
+    <td>1.10.2</td>
     <td>cdn.jquery</td>
-  </tr>
-  <tr>
-    <td>Lodash</td>
-    <td>1.1.1</td>
-    <td>cdn.lodash</td>
   </tr>
   <tr>
     <td>Processing.js</td>
@@ -36,17 +31,22 @@ require.js configs.
   </tr>
   <tr>
     <td>Raphaël</td>
-    <td>2.1.0</td>
+    <td>2.1.2</td>
     <td>cdn.raphael</td>
   </tr>
   <tr>
     <td>Underscore</td>
-    <td>1.4.4</td>
+    <td>1.5.2</td>
     <td>cdn.underscore</td>
   </tr>
   <tr>
+    <td>Underscore.mixins</td>
+    <td>1</td>
+    <td>cdn.underscore.mixins</td>
+  </tr>
+  <tr>
     <td>jQuery UI</td>
-    <td>1.10.2</td>
+    <td>1.9.2</td>
     <td>cdn.jqueryui</td>
   </tr>
 </table>
