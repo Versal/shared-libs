@@ -7,7 +7,7 @@ require.js configs.
 ## Contents
 <table>
   <tr>
-    <th>Library</th><th>Version</th><th>Shim Name</th>
+    <th>Library</th><th>Version</th><th>Shim Name</th><th>Aliases</th>
   </tr>
   <tr>
     <td>Backbone</td>
@@ -38,11 +38,18 @@ require.js configs.
     <td>Underscore</td>
     <td>1.5.2</td>
     <td>cdn.underscore</td>
+    <td>cdn.lodash</td>
   </tr>
   <tr>
     <td>Underscore.mixins</td>
     <td>1</td>
     <td>cdn.underscore.mixins</td>
+  </tr>
+  <tr>
+    <td>Hogan</td>
+    <td>2.0.0</td>
+    <td>cdn.hogan</td>
+    <td>cdn.mustache</td>
   </tr>
   <tr>
     <td>jQuery UI</td>
