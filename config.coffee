@@ -19,11 +19,13 @@ define [], ->
       'cdn.raphael': 'raphael-2.1.2'
       'cdn.underscore': 'underscore-1.5.2'
       'cdn.underscore.mixins': 'underscore.mixins'
+      'cdn.hogan': 'hogan-2.0.0'
       'cdn.jqueryui': 'jquery.ui-1.9.2' # Unfortunately stuck this way due to
                                         # http://bugs.jqueryui.com/ticket/9381
 
     aliases =
       'cdn.lodash': 'cdn.underscore'
+      'cdn.mustache': 'cdn.hogan'
 
     config =
       waitSeconds: 120
@@ -71,6 +73,8 @@ define [], ->
             MathJax.Hub.Configured()
             MathJax
 
+        'cdn.hogan':
+          exports: 'Hogan'
 
     for k, v of paths
       if coreDeps.indexOf(k) > -1

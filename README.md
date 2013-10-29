@@ -45,6 +45,11 @@ require.js configs.
     <td>cdn.underscore.mixins</td>
   </tr>
   <tr>
+    <td>Mustache</td>
+    <td>0.7.2</td>
+    <td>cdn.mustache</td>
+  </tr>
+  <tr>
     <td>jQuery UI</td>
     <td>1.9.2</td>
     <td>cdn.jqueryui</td>
