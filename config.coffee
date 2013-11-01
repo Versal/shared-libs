@@ -67,6 +67,7 @@ define [], ->
               jax: ["input/TeX","input/MathML","input/AsciiMath","output/HTML-CSS","output/NativeMML"]
               extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","Safe.js"]
               TeX: extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+              SVG: scale: 110, blacker: 2 # default: scale: 100, blacker: 10
               skipStartupTypeset: true
               delayStartupUntil: 'configured'
               messageStyle: 'none'
