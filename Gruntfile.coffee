@@ -1,41 +1,66 @@
-configurator = null
-global.define = (deps, method) ->
-  configurator = method()
-require './config.coffee'
-
 module.exports = (grunt) ->
-
   [
+    'grunt-contrib-clean'
     'grunt-contrib-coffee'
     'grunt-contrib-requirejs'
     'grunt-contrib-uglify'
   ].forEach grunt.loadNpmTasks
 
-  grunt.registerTask 'list', 'List paths in generated config', ->
-    fields = configurator()
-    console.log paths: fields.paths, shim: fields.shim
-
-  config = configurator 'lib'
-
-  relativePaths = {}
-  for k, v of config.rawPaths
-    relativePaths[k] = "lib/src/#{v}"
-
   grunt.initConfig
+    clean:
+      files: 'lib/**/*.*'
+
     coffee:
       config:
-        src: ['config.coffee']
-        dest: 'config.js'
+        src: 'src/config.coffee'
+        dest: 'lib/config.js'
 
     requirejs:
-      dist:
+      'core.min':
         options:
-          mainConfigFile: './config.js'
+          mainConfigFile: './lib/config.js'
+          cjsTranslate: true
           optimize: 'uglify2'
-          include: config.coreDeps
-          paths: relativePaths
-          shim: config.shim
-          out: 'lib/dist/core.min.js'
+
+          paths:
+            'cdn.jquery': 'src/jquery-1.10.2'
+            'cdn.underscore': 'src/underscore-1.5.2'
+            'cdn.backbone': 'src/backbone-1.0.0'
+            'cdn.marionette': 'src/backbone.marionette-1.1.0'
+            'cdn.underscore.mixins': 'src/underscore.mixins'
+
+          include: [
+            'cdn.jquery'
+            'cdn.underscore'
+            'cdn.backbone'
+            'cdn.marionette'
+            'cdn.underscore.mixins'
+          ]
+
+          shim:
+            'cdn.backbone':
+              deps: ['cdn.underscore', 'cdn.jquery']
+              exports: 'Backbone'
+
+            'cdn.marionette':
+              deps: ['cdn.backbone']
+              exports: 'Backbone.Marionette'
+
+            'cdn.jquery':
+              exports: '$'
+
+            'cdn.underscore':
+              exports: '_'
+              deps: ['cdn.underscore.mixins']
+              init: (mixins) -> _.mixin mixins
+
+            'cdn.processing':
+              exports: 'Processing'
+
+            'cdn.raphael':
+              exports: 'Raphael'
+
+          out: 'lib/core.min.js'
 
     uglify:
       options:
@@ -44,17 +69,12 @@ module.exports = (grunt) ->
 
       config:
         files:
-          'config.js': ['config.js']
+          'lib/config.js': ['lib/config.js']
 
       libs:
         expand: true
         flatten: true
-        src: ['lib/src/*.js']
-        dest: 'lib/dist/'
+        src: 'src/*.js'
+        dest: 'lib/'
 
-    list:
-      options:
-        basePath: '/path/to'
-
-  grunt.registerTask 'default', ['coffee', 'requirejs', 'uglify', 'list']
-
+  grunt.registerTask 'default', ['clean', 'coffee', 'requirejs', 'uglify']
