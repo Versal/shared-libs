@@ -1,28 +1,20 @@
 {
   "name": "versal-shared-libs",
-  "description": "Shared libs for versal sdk and player",
-  "version": "0.2.9",
+  "version": "0.3.0",
+  "description": "Shared libs for versal.com and player",
   "author": "Versal Team",
-  "homepage": "http://versal.com/",
   "repository": {
     "type": "git",
     "url": "git://github.com/Versal/shared-libs.git"
   },
-  "bugs": {
-    "url": "http://github.com/Versal/shared-libs/issues"
-  },
-  "licenses": [
-    {
-      "url": "http://github.com/Versal/shared-libs/blob/master/LICENSE"
-    }
-  ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-coffee": "~0.7.0",
-    "grunt-contrib-requirejs": "~0.4.1"
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0"
   }
 }
