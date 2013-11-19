@@ -18,6 +18,7 @@ config =
     'cdn.jqueryui': 'lib/jquery.ui-1.9.2' # Unfortunately stuck this way due to
                                           # http://bugs.jqueryui.com/ticket/9381
     'cdn.mathjax': 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured'
+    'cdn.youtube': 'https://www.youtube.com/iframe_api?'
 
   map:
     '*': aliases
@@ -68,8 +69,19 @@ config =
     'cdn.hogan':
       exports: 'Hogan'
 
-if typeof module != 'undefined'
-  module.exports = config
+    # Youtube loading is async, so we wrap it up in a deferred object
+    #
+    # To use, do:
+    #   require ['cdn.youtube'], (dfd) ->
+    #     dfd.done (YT) -> do_smth(YT.Player)
+    #
+    'cdn.youtube':
+      exports: 'YT'
+      deps: ['cdn.jquery']
+      init: ->
+        dfd = $.Deferred()
+        window.onYouTubeIframeAPIReady = -> dfd.resolve YT
+        return dfd
 
-if typeof define != 'undefined'
-  define [], -> config
+if typeof window != 'undefined' && typeof require?.config == 'function'
+  require.config config

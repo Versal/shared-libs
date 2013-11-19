@@ -4,6 +4,7 @@ module.exports = (grunt) ->
     'grunt-contrib-coffee'
     'grunt-contrib-requirejs'
     'grunt-contrib-uglify'
+    'grunt-contrib-watch'
   ].forEach grunt.loadNpmTasks
 
   grunt.initConfig
@@ -20,6 +21,8 @@ module.exports = (grunt) ->
         options:
           mainConfigFile: './lib/config.js'
           cjsTranslate: true
+          preserveLicenseComments: false
+
           optimize: 'uglify2'
 
           paths:
@@ -62,6 +65,10 @@ module.exports = (grunt) ->
 
           out: 'lib/core.min.js'
 
+    watch:
+      files: './test/*.*'
+      tasks: ['preview']
+
     uglify:
       options:
         mangle: true
@@ -78,3 +85,11 @@ module.exports = (grunt) ->
         dest: 'lib/'
 
   grunt.registerTask 'default', ['clean', 'coffee', 'requirejs', 'uglify']
+
+  grunt.registerTask 'preview', ->
+    express = require 'express'
+    path = require 'path'
+    app = express()
+    app.use express.static path.resolve './test'
+    app.use '/lib', express.static path.resolve './lib'
+    app.listen 3434
