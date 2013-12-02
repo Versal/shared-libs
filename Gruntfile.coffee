@@ -23,10 +23,10 @@ module.exports = (grunt) ->
           optimize: 'uglify2'
 
           paths:
-            'cdn.jquery': 'src/jquery-1.10.2'
+            'cdn.jquery': 'src/jquery-2.0.3'
             'cdn.underscore': 'src/underscore-1.5.2'
             'cdn.backbone': 'src/backbone-1.0.0'
-            'cdn.marionette': 'src/backbone.marionette-1.1.0'
+            'cdn.marionette': 'src/backbone.marionette-1.3.0'
             'cdn.underscore.mixins': 'src/underscore.mixins'
 
           include: [
