@@ -15,8 +15,7 @@ config =
     'cdn.processing': 'lib/processing-1.4.1'
     'cdn.raphael': 'lib/raphael-2.1.2'
     'cdn.hogan': 'lib/hogan-2.0.0'
-    'cdn.jqueryui': 'lib/jquery.ui-1.9.2' # Unfortunately stuck this way due to
-                                          # http://bugs.jqueryui.com/ticket/9381
+    'cdn.jqueryui': 'lib/jquery.ui-1.11.0pre'
     'cdn.mathjax': 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured'
 
   map:
