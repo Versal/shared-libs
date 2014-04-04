@@ -36,7 +36,7 @@ require.js configs.
   </tr>
   <tr>
     <td>Underscore</td>
-    <td>1.5.2</td>
+    <td>1.6.0</td>
     <td>cdn.underscore</td>
     <td>cdn.lodash</td>
   </tr>
