@@ -53,7 +53,7 @@ require.js configs.
   </tr>
   <tr>
     <td>jQuery UI</td>
-    <td>1.9.2</td>
+    <td>1.11.0pre</td>
     <td>cdn.jqueryui</td>
   </tr>
 </table>
