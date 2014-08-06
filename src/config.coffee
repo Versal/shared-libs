@@ -16,7 +16,7 @@ config =
     'cdn.raphael': 'lib/raphael-2.1.2'
     'cdn.hogan': 'lib/hogan-2.0.0'
     'cdn.jqueryui': 'lib/jquery.ui-1.11.0pre'
-    'cdn.mathjax': 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured'
+    'cdn.mathjax': 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured'
 
   map:
     '*': aliases
